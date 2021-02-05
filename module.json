@@ -1,0 +1,12 @@
+{
+    "servers": ["https://raw.githubusercontent.com/Arno736/tera-server-identifier/master/"],
+	"supportUrl": "https://github.com/Arno736/tera-server-identifier/issues",
+    "name": "server-identifier",
+    "author": "Arno736",
+    "description": "Show server name on guild name.",
+    "version": "1.0",
+    "options": {
+        "niceName": "Server Identifier",
+        "guiName": "Server Identifier"
+    }
+}
