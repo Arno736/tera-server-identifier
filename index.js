@@ -12,7 +12,6 @@ module.exports = function ServerIdentifier(mod) {
 	mod.command.add(['si'], () => {
 		enabled = !enabled;
 		mod.command.message('Enable: ' + enabled);
-		break;
 	});
 
 	function guildName (name, id) {
