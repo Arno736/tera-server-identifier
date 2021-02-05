@@ -6,4 +6,4 @@ Show server name after guild name separate with `|`
 
 Mod can be enable/disable with `/8 si`
 
-[GuildName | Mystel]
+[GuildName | Server] or [Server] if no guild
