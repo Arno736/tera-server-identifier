@@ -11,22 +11,20 @@ module.exports = function ServerIdentifier(mod) {
 	
 	mod.command.add(['si'], () => {
 		enabled = !enabled;
-		mod.command.message('Enable: ' + enabled);
+		mod.command.message('Enabled: ' + enabled);
 	});
 
 	function guildName (name, id) {
-		if (!name) return serverId[id];
-		else return name + ' | ' + serverId[id];
+		let str = ((!serverId[id]) ? ('Unk' + id) :  serverId[id]);
+		return ((!name) ? str : (name + ' | ' + str));
 	}
 
 	//Refresh au spawn
 	mod.hook('S_SPAWN_USER', 17, (event) => {
-		if(enabled && serverId[event.serverId]) {
+		if(enabled) {
 			event.guildName = guildName(event.guildName, event.serverId);
 			return true;
 		}
-		
-		console.error('Unknow Server Id: ' + event.serverId);
 	});
 
 	//Données du groupe
@@ -43,13 +41,9 @@ module.exports = function ServerIdentifier(mod) {
 
 	//Refresh en groupe
 	mod.hook('S_GUILD_NAME', 2, (event) => {
-		if (event.gameId != mod.game.me.gameId && enabled && group.length > 0) {
-			if (group[event.gameId]) {
-				if (serverId[group[event.gameId].serverId]) {
-					event.guildName = guildName(event.guildName,  group[event.gameId]);
-					return true;
-				}
-			}
+		if (enabled && event.gameId != mod.game.me.gameId && group.length > 0 && group[event.gameId]) {
+			event.guildName = guildName(event.guildName,  group[event.gameId]);
+			return true;
 		}
 	});
 }

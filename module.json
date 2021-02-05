@@ -4,7 +4,7 @@
     "name": "server-identifier",
     "author": "Arno736",
     "description": "Show server name on guild name.",
-    "version": "1.0",
+    "version": "1.1",
     "options": {
         "niceName": "Server Identifier",
         "guiName": "Server Identifier"
