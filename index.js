@@ -16,12 +16,12 @@ module.exports = function ServerIdentifier(mod) {
 
 	function guildName (name, id) {
 		let str = ((!serverId[id]) ? ('Unk' + id) :  serverId[id]);
-		return ((!name) ? str : (name + ' | ' + str));
+		return ((!name) ? str : (name + ' - ' + str));
 	}
 	
 	//Refresh At Players Spawn
 	mod.hook('S_SPAWN_USER', 17, (event) => {
-		if(enabled) {
+		if(enabled && mod.game.me.inDungeon) {
 			event.guildName = guildName(event.guildName, event.serverId);
 			return true;
 		}
