@@ -4,9 +4,12 @@
     "name": "server-identifier",
     "author": "Arno736",
     "description": "Show server name on guild name.",
-    "version": "1.3",
+    "version": "1.4",
     "options": {
         "niceName": "Server Identifier",
         "guiName": "Server Identifier"
+    },
+    "dependencies": {
+        "external-interface": "https://raw.githubusercontent.com/tera-toolbox/tera-game-state/master/module.json"
     }
 }

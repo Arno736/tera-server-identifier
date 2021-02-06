@@ -15,11 +15,11 @@ module.exports = function ServerIdentifier(mod) {
 	});
 
 	function guildName (name, id) {
-		let str = ((!serverId[id]) ? ('Unk' + id) :  serverId[id]);
+		let str = ((!serverId[id]) ? ('Unk' + id) : serverId[id]);
 		return ((!name) ? str : (name + ' - ' + str));
 	}
 	
-	//Refresh At Players Spawn
+	//Rewrite When Players Spawn
 	mod.hook('S_SPAWN_USER', 17, (event) => {
 		if(enabled && mod.game.me.inDungeon) {
 			event.guildName = guildName(event.guildName, event.serverId);
@@ -29,6 +29,6 @@ module.exports = function ServerIdentifier(mod) {
 
 	//Block Guild Refresh For Other Player
 	mod.hook('S_GUILD_NAME', 2, (event) => {
-		if (enabled && event.gameId != mod.game.me.gameId) return false;
+		if (enabled && event.gameId != mod.game.me.gameId && mod.game.me.inDungeon) return false;
 	});
 }
